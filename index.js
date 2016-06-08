@@ -1,8 +1,11 @@
 var express = require('express');
+var bodyParser = require('bodyParser');
+
 var app = express();
+app.use(bodyParser.json());
 
 app.post('/drain/fet7jr4ho98tf3', function (req, res) {
-    console.log(req.body);
+    console.log(req);
     return res.send(200);
 });
 
