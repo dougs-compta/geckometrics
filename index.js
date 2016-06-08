@@ -5,7 +5,7 @@ var app = express();
 app.use(bodyParser.json());
 
 app.post('/drain/fet7jr4ho98tf3', function (req, res) {
-    console.log(req);
+    console.log(req.body);
     return res.send(200);
 });
 
