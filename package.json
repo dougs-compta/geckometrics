@@ -1,0 +1,24 @@
+{
+  "name": "geckometrics",
+  "version": "1.0.0",
+  "description": "Send Heroku metrics to Geckoboard dashboard",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "heroku",
+    "metrics",
+    "logs",
+    "drain",
+    "geckoboard",
+    "dashboard",
+    "widget"
+  ],
+  "author": "Flolagale (Flabs)",
+  "license": "WTFPL",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
