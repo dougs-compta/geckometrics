@@ -27,7 +27,7 @@ const pg = require('pg');
 const app = express();
 
 function bodyParser(req, res, next) {
-    if (!req.is('application/logplex-1')) return res.sendStatus(500);
+    if (!req.is('application/logplex-1')) return next();
 
     req.logLine = '';
     req.setEncoding('utf8');
@@ -41,6 +41,8 @@ app.use(bodyParser);
 
 app.post('/drain/fet7jr4ho98tf3', function (req, res) {
     res.sendStatus(200);
+
+    if (!req.logLine) return console.log('Error: No log line parsed.');
 
     console.log(req.logLine);
 
@@ -102,6 +104,7 @@ app.post('/drain/fet7jr4ho98tf3', function (req, res) {
 });
 
 app.get('/memory/fet7jr4ho98tf3', function (req, res) {
+    debugger;
     return res.json({
         "item": [
             {
