@@ -225,7 +225,7 @@ function pgQuery(query, callback) {
 
         client.query(query, function (err, result) {
             if (err) {
-                console.error('error inserting ', err);
+                console.error('error querying', query, err);
                 if (client) done(client);
                 return callback(err);
             }
@@ -235,3 +235,10 @@ function pgQuery(query, callback) {
         });
     });
 };
+
+console.log('Deleting old metrics.');
+pgQuery("DELETE * FROM metrics WHERE metrics.date < (now() AT TIME ZONE 'utc') - INTERVAL '48 hours'", function (err, result) {
+    if (err) return console.error('error', err);
+    console.log(result);
+    console.log('Old metrics deleted.');
+});
