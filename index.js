@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 
 function bodyParser(req, res, next) {
-    if (!req.is('application/logplex-1')) return res.send(500);
+    if (!req.is('application/logplex-1')) return res.sendStatus(500);
 
     req.logLine = '';
     req.setEncoding('utf8');
@@ -18,7 +18,7 @@ function bodyParser(req, res, next) {
 app.use(bodyParser);
 
 app.post('/drain/fet7jr4ho98tf3', function (req, res) {
-    res.send(200);
+    res.sendStatus(200);
 
     console.log(req.logLine);
 
@@ -43,6 +43,7 @@ app.post('/drain/fet7jr4ho98tf3', function (req, res) {
 
         let memory = 0;
         match = line.match(/memory_total=(\d+)/);
+        console.log(match);
         if (match) memory = match[1];
 
         let memoryQuota = 0;
