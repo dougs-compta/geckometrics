@@ -119,7 +119,7 @@ app.get('/service/' + token, function (req, res) {
     WHERE
     metrics.type = 'router'
     GROUP BY intervals.id, intervals.start_time, intervals.end_time
-    ORDER BY intervals.id;`;
+    ORDER BY intervals.id DESC;`;
 
     pgQuery(query, (err, result) => {
         if (err) res.sendStatus(500);
@@ -156,7 +156,7 @@ app.get('/throughput/' + token, function (req, res) {
     WHERE
     metrics.type = 'router'
     GROUP BY intervals.id, intervals.start_time, intervals.end_time
-    ORDER BY intervals.id;`;
+    ORDER BY intervals.id DESC;`;
 
     pgQuery(query, (err, result) => {
         if (err) res.sendStatus(500);
@@ -193,7 +193,7 @@ app.get('/memory/' + token, function (req, res) {
     WHERE
       metrics.type = 'web'
     GROUP BY intervals.id, intervals.start_time, intervals.end_time
-    ORDER BY intervals.id;`;
+    ORDER BY intervals.id DESC;`;
 
     pgQuery(query, (err, result) => {
         if (err) res.sendStatus(500);
