@@ -2,6 +2,7 @@
   "name": "geckometrics",
   "version": "1.0.0",
   "description": "Send Heroku metrics to Geckoboard dashboard",
+  "repository": "https://github.com:dougs-compta/geckometrics.git",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -21,6 +22,7 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
+    "lodash": "^4.13.1",
     "pg": "^5.0.0"
   }
 }
