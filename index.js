@@ -43,7 +43,6 @@ app.post('/drain/fet7jr4ho98tf3', function (req, res) {
 
         let memory = 0;
         match = line.match(/memory_total=(\d+)/);
-        console.log(match);
         if (match) memory = match[1];
 
         let memoryQuota = 0;
