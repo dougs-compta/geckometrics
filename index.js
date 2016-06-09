@@ -161,7 +161,7 @@ app.get('/throughput/' + token, function (req, res) {
     pgQuery(query, (err, result) => {
         if (err) res.sendStatus(500);
 
-        const items = result.rows.map(r => r.count);
+        const items = result.rows.map(r => r.count / 10);
         return res.json({
             item: [
                 {
@@ -237,7 +237,7 @@ function pgQuery(query, callback) {
 };
 
 console.log('Deleting old metrics.');
-pgQuery("DELETE * FROM metrics WHERE metrics.date < (now() AT TIME ZONE 'utc') - INTERVAL '48 hours'", function (err, result) {
+pgQuery("DELETE * FROM metrics WHERE metrics.date < (now() AT TIME ZONE 'utc') - INTERVAL '3 hours'", function (err, result) {
     if (err) return console.error('error', err);
     console.log(result);
     console.log('Old metrics deleted.');
