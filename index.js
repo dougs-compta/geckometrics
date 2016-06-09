@@ -237,7 +237,7 @@ function pgQuery(query, callback) {
 };
 
 console.log('Deleting old metrics.');
-pgQuery("DELETE * FROM metrics WHERE metrics.date < (now() AT TIME ZONE 'utc') - INTERVAL '3 hours'", function (err, result) {
+pgQuery("DELETE FROM metrics WHERE metrics.date < (now() AT TIME ZONE 'utc') - INTERVAL '3 hours'", function (err, result) {
     if (err) return console.error('error', err);
     console.log(result);
     console.log('Old metrics deleted.');
