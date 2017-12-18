@@ -13,3 +13,26 @@ If anyone is interested, we can provide a bit more guidance on how to set up thi
 
 Our lovely realtime Heroku monitoring:
 ![Image of our dashboard](http://i.imgur.com/dIrzMWZ.png)
+
+## Nitty gritty
+The database schema used by geckometrics, in PostgreSQL dialect:
+```sql
+CREATE TABLE metrics
+(
+  id          INTEGER DEFAULT nextval('metrics_id_seq' :: REGCLASS) NOT NULL
+    CONSTRAINT metrics_pkey
+    PRIMARY KEY,
+  type        TEXT                                                  NOT NULL,
+  date        TIMESTAMP                                             NOT NULL,
+  source      TEXT,
+  status      INTEGER,
+  service     DOUBLE PRECISION,
+  memory      DOUBLE PRECISION,
+  memoryquota DOUBLE PRECISION,
+  load        DOUBLE PRECISION
+);
+CREATE INDEX metrics_type_index
+  ON metrics (type);
+CREATE INDEX metrics_date_index
+  ON metrics (date);
+```
