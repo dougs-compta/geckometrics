@@ -75,6 +75,10 @@ async function main() {
         let metric = null;
         if (line.includes('heroku router') && line.includes('service=') && line.includes('status=')) {
             // 2016-06-09T07:32:15.360608+00:00 app[web.1]: 239 <158>1 2016-06-09T07:32:14.500838+00:00 host heroku router - at=info method=POST path="/login" host=app.dougs.fr request_id=7f4e29d2-e2f1-42d0-b47b-9150b2b1183a fwd="46.246.28.90" dyno=web.2 connect=1ms service=129ms status=200 bytes=5016
+
+            /* Skip websocket requests. */
+            if (line.search('path="/websockets') !== -1 || line.seach('path="/socket.io') !== -1)  return;
+
             let date = new Date();
             let match = line.match(datePattern);
             if (match) date = new Date(match[1]);
