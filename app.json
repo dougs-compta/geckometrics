@@ -11,11 +11,5 @@
         "TOKEN": {
             "required": "true"
         }
-    },
-    "addons": [
-        "heroku-postgresql:hobby-dev"
-    ],
-    "scripts": {
-        "postdeploy": "psql $DATABASE_URL -f schema.sql"
     }
 }
