@@ -6,12 +6,13 @@ Our online accounting SAAS app [www.dougs.fr](https://www.dougs.fr) runs on Hero
 
 ## How?
 1. Deploy Geckometrics somewhere (for instance on an Heroku free hobby dyno):
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 2. Redirect the [log drain](https://devcenter.heroku.com/articles/log-drains) of the app you want to monitor to your geckometrics instance, for example:
 
 ```
-heroku drains:add https://YOUR_APP_NAME.herokuapp.com/drains/TOKEN
+heroku drains:add https://YOUR_GECKOMETRICS.herokuapp.com/drains/TOKEN -a YOUR_APP
 ```
 
 Set up some custom geckoboard widgets polling your geckometrics instance. You have your average response time, your request throughput and your dynos memory in realtime on your dashboard. Voila!
