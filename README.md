@@ -1,6 +1,8 @@
 # Geckometrics
 Expose Heroku metrics as a Geckoboard dashboard widget compatible API :chart_with_upwards_trend:
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Why?
 Our online accounting SAAS app [www.dougs.fr](https://www.dougs.fr) runs on Heroku. While Heroku natively provides interesting monitoring metrics, there is no off the shelf solution to display them in a [Geckoboard](https://www.geckoboard.com/) dashboard, so we made it.
 
