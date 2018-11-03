@@ -20,4 +20,4 @@ heroku drains:add https://YOUR_GECKOMETRICS.herokuapp.com/drains/TOKEN -a YOUR_A
 If anyone is interested, we can provide a bit more guidance on how to set up this (open an issue here or ping us on twitter [@dougscompta](https://twitter.com/dougscompta)).
 
 Our lovely realtime Heroku monitoring:
-![Image of our dashboard](http://i.imgur.com/dIrzMWZ.png)
+![Image of our dashboard](https://i.imgur.com/tHpnZHo.png)
