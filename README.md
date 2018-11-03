@@ -5,9 +5,17 @@ Expose Heroku metrics as a Geckoboard dashboard widget compatible API :chart_wit
 Our online accounting SAAS app [www.dougs.fr](https://www.dougs.fr) runs on Heroku. While Heroku natively provides interesting monitoring metrics, there is no off the shelf solution to display them in a [Geckoboard](https://www.geckoboard.com/) dashboard, so we made it.
 
 ## How?
-Deploy Geckometrics somewhere (for instance on an Heroku free hobby dyno), redirect the [log drain](https://devcenter.heroku.com/articles/log-drains) of the app you want to monitor to your geckometrics instance.
+1. Deploy Geckometrics somewhere (for instance on an Heroku free hobby dyno):
 
-Set up some custom geckoboard widgets polling your geckometrics instance. You have your average response time, your request throughput and your dynos memory in realtime on your dashboard. Voila !
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+2. Redirect the [log drain](https://devcenter.heroku.com/articles/log-drains) of the app you want to monitor to your geckometrics instance, for example:
+
+```
+heroku drains:add https://YOUR_GECKOMETRICS.herokuapp.com/drains/TOKEN -a YOUR_APP
+```
+
+Set up some custom geckoboard widgets polling your geckometrics instance. You have your average response time, your request throughput and your dynos memory in realtime on your dashboard. Voila!
 
 If anyone is interested, we can provide a bit more guidance on how to set up this (open an issue here or ping us on twitter [@dougscompta](https://twitter.com/dougscompta)).
 
