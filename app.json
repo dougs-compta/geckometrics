@@ -2,7 +2,7 @@
     "name": "Geckometrics",
     "description": "Expose Heroku metrics as a Geckoboard dashboard widget compatible API",
     "repository": "https://github.com/dougs-compta/geckometrics",
-    "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+    "logo": "https://cdn.jsdelivr.net/gh/heroku/node-js-getting-started@master/public/node.svg",
     "keywords": ["node", "express", "geckoboard"],
     "env": {
         "GB_API_KEY": {
