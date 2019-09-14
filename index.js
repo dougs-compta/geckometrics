@@ -26,6 +26,10 @@ async function main() {
                     type: 'string',
                     name: 'Source'
                 },
+                path: {
+                    type: 'string',
+                    name: 'Path'
+                },
                 status: {
                     type: 'number',
                     name: 'Status'
@@ -83,6 +87,14 @@ async function main() {
             let match = line.match(datePattern);
             if (match) date = new Date(match[1]);
 
+            let path = '';
+            match = line.match(/path=(\d+)/);
+            if (match) {
+                path = match[1];
+                path = path.replace(/\?.*/, '') // Strip query parameters
+                    .replace(/\d+/g,'#'); // Replace ids with #
+            }
+
             let service = 0;
             match = line.match(/service=(\d+)/);
             if (match) service = match[1];
@@ -91,7 +103,7 @@ async function main() {
             match = line.match(/status=(\d+)/);
             if (match) status = match[1];
 
-            metric = {type: 'router', date, service, status}
+            metric = {type: 'router', date, path, service, status}
         } else if (line.includes('heroku web') && line.includes('source=') && line.includes('memory_total=')) {
             // 2016-06-09T07:32:16.527056+00:00 app[web.1]: 339 <45>1 2016-06-09T07:32:16.163266+00:00 host heroku web.2 - source=web.2 dyno=heroku.32934028.9646d93e-977a-421a-a5ef-02adc583e5b5 sample#memory_total=247.22MB sample#memory_rss=204.91MB sample#memory_cache=41.48MB sample#memory_swap=0.82MB sample#memory_pgpgin=2377742pages sample#memory_pgpgout=2339192pages sample#memory_quota=1024.00MB
             let date = new Date();
@@ -124,7 +136,6 @@ async function main() {
             let load = 0;
             match = line.match(/load-avg-15m=(\d+)/);
             if (match) load = match[1];
-
 
             metric = {type: 'postgres', date, source, load};
         }
