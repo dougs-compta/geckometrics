@@ -145,6 +145,7 @@ async function main() {
                 type: metric.type || null,
                 date: metric.date || new Date(),
                 source: metric.source || '',
+                path: metric.path || '',
                 status: Number(metric.status || 0),
                 service: Number(metric.service || 0),
                 memory: Number(metric.memory || 0),
