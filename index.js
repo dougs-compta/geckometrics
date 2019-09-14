@@ -81,7 +81,10 @@ async function main() {
             // 2016-06-09T07:32:15.360608+00:00 app[web.1]: 239 <158>1 2016-06-09T07:32:14.500838+00:00 host heroku router - at=info method=POST path="/login" host=app.dougs.fr request_id=7f4e29d2-e2f1-42d0-b47b-9150b2b1183a fwd="46.246.28.90" dyno=web.2 connect=1ms service=129ms status=200 bytes=5016
 
             /* Skip websocket requests. */
-            if (line.search('path="/websockets') !== -1 || line.search('path="/socket.io') !== -1)  return;
+            if (line.search('path="/websockets') !== -1 || line.search('path="/socket.io') !== -1
+                || line.search('/webhook') !== -1 || line.search('/stats/users') !== -1) {
+                return;
+            }
 
             let date = new Date();
             let match = line.match(datePattern);
@@ -104,7 +107,6 @@ async function main() {
             if (match) status = match[1];
 
             metric = {type: 'router', date, path, service, status};
-            console.log(JSON.stringify(metric));
         } else if (line.includes('heroku web') && line.includes('source=') && line.includes('memory_total=')) {
             // 2016-06-09T07:32:16.527056+00:00 app[web.1]: 339 <45>1 2016-06-09T07:32:16.163266+00:00 host heroku web.2 - source=web.2 dyno=heroku.32934028.9646d93e-977a-421a-a5ef-02adc583e5b5 sample#memory_total=247.22MB sample#memory_rss=204.91MB sample#memory_cache=41.48MB sample#memory_swap=0.82MB sample#memory_pgpgin=2377742pages sample#memory_pgpgout=2339192pages sample#memory_quota=1024.00MB
             let date = new Date();
