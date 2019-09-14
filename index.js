@@ -91,7 +91,7 @@ async function main() {
             if (match) date = new Date(match[1]);
 
             let path = '';
-            match = line.match(/path="([\w\/]+)/);
+            match = line.match(/path="([\w\/-]+)/);
             if (match) {
                 path = match[1];
                 path = path.replace(/\?.*/, '') // Strip query parameters
