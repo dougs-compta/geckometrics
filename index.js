@@ -97,10 +97,8 @@ async function main() {
                 path = path.replace(/\?.*/, '') // Strip query parameters
                     .replace(/\d+/g,'#'); // Replace ids with #
 
-                const methodMatch = line.match(/method="(\w+)/);
-                if (methodMatch) {
-                    path = methodMatch[1].charAt(0).toLowerCase() + path;
-                }
+                const methodMatch = line.match(/method=(\w+)/);
+                path = methodMatch[1].charAt(0).toLowerCase() + path;
             }
 
             let service = 0;
